@@ -38,6 +38,7 @@ class _HomeScreen2 extends State<HomeScreen2> {
               ),
               const SizedBox(height: 40),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   InkWell(
                     onTap: () => setState(() {
@@ -88,6 +89,7 @@ class _HomeScreen2 extends State<HomeScreen2> {
               ),
               const SizedBox(height: 30),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   InkWell(
                     onTap: () => setState(() {
