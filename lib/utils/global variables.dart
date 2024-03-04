@@ -4,16 +4,6 @@ int counterValue = 0;
 int byTwo = 2;
 int byFour = 4;
 
-Map<String, Widget> data1 = {
-  'Exit': const Icon(Icons.exit_to_app),
-  'Play': const Icon(Icons.play_arrow),
-  'Pause': const Icon(Icons.pause),
-  'Stop': const Icon(Icons.stop),
-  'Close': const Icon(Icons.close),
-  'Delete': const Icon(Icons.delete),
-  'Email': const Icon(Icons.email),
-};
-
 List<Map<String, IconData>> data = [
   {'Exit': Icons.exit_to_app},
   {'Play': Icons.play_arrow},
@@ -25,4 +15,27 @@ List<Map<String, IconData>> data = [
   {'Exit': Icons.exit_to_app},
   {'Play': Icons.play_arrow},
   {'Pause': Icons.pause},
+];
+
+List<List<IconData>> icons = [
+  [
+    Icons.add,
+    Icons.accessibility_new_outlined,
+    Icons.ice_skating_rounded,
+    Icons.contrast_sharp
+  ],
+  [
+    Icons.abc_sharp,
+    Icons.flare_rounded,
+    Icons.accessible_forward_outlined,
+    Icons.account_circle_outlined
+  ],
+  [Icons.ad_units_rounded, Icons.theater_comedy, Icons.key, Icons.dangerous],
+  [
+    Icons.opacity,
+    Icons.label_important_outline,
+    Icons.join_inner_outlined,
+    Icons.radio_button_off
+  ],
+  [Icons.eco, Icons.ac_unit, Icons.wallet, Icons.person_remove_alt_1_outlined]
 ];
