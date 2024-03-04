@@ -39,3 +39,14 @@ List<List<IconData>> icons = [
   ],
   [Icons.eco, Icons.ac_unit, Icons.wallet, Icons.person_remove_alt_1_outlined]
 ];
+
+List<Map<int, Color>> boxData = [
+  {1: Colors.blue.shade200},
+  {2: Colors.indigo.shade300},
+  {3: Colors.blue.shade200},
+  {4: Colors.indigo.shade300},
+  {5: Colors.blue.shade200},
+  {6: Colors.indigo.shade300},
+  {7: Colors.blue.shade200},
+  {8: Colors.indigo.shade300},
+];

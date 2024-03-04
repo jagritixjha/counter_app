@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utils/global variables.dart';
+
 class DynamicListHomeScreen extends StatefulWidget {
   const DynamicListHomeScreen({super.key});
 
@@ -8,16 +10,7 @@ class DynamicListHomeScreen extends StatefulWidget {
 }
 
 class _DynamicListHomeScreenState extends State<DynamicListHomeScreen> {
-  List<Map<int, Color>> boxData = [
-    {1: Colors.blue.shade200},
-    {2: Colors.indigo.shade300},
-    {3: Colors.blue.shade200},
-    {4: Colors.indigo.shade300},
-    {5: Colors.blue.shade200},
-    {6: Colors.indigo.shade300},
-    {7: Colors.blue.shade200},
-    {8: Colors.indigo.shade300},
-  ];
+  int len = boxData.length;
 
   Widget boxList(context, List<Map<int, Color>> boxData) {
     return SingleChildScrollView(
@@ -54,7 +47,7 @@ class _DynamicListHomeScreenState extends State<DynamicListHomeScreen> {
       home: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          backgroundColor: Colors.teal.shade900,
+          backgroundColor: Colors.indigo.shade900,
           title: const Text(
             'Dynamic list',
             style: TextStyle(
@@ -65,6 +58,54 @@ class _DynamicListHomeScreenState extends State<DynamicListHomeScreen> {
           ),
         ),
         body: boxList(context, boxData),
+        floatingActionButton: Row(
+          mainAxisSize: MainAxisSize.min,
+          // This is important to keep the Column size to a minimum
+          children: [
+            FloatingActionButton(
+              backgroundColor: Colors.indigo.shade900,
+              shape: const CircleBorder(),
+              onPressed: () {
+                setState(() {
+                  if (boxData.length % 2 == 0) {
+                    len++;
+                    boxData.add({len: Colors.blue.shade200});
+                  } else {
+                    len++;
+                    boxData.add({len: Colors.indigo.shade300});
+                  }
+                });
+              },
+              heroTag: 'fab1',
+              child: const Icon(
+                Icons.add,
+                color: Colors.white,
+                size: 30,
+                weight: 100,
+              ),
+            ),
+            const SizedBox(
+              width: 10, // Spacing between the FABs
+            ),
+            FloatingActionButton(
+              backgroundColor: Colors.indigo.shade900,
+              shape: const CircleBorder(),
+              onPressed: () {
+                setState(() {
+                  boxData.removeLast();
+                  len--;
+                });
+              },
+              heroTag: 'fab2',
+              child: const Icon(
+                Icons.remove,
+                color: Colors.white,
+                size: 30,
+                weight: 10,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
