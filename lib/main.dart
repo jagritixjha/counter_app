@@ -1,6 +1,6 @@
-import 'package:counter_app/views/dynamic_list.dart';
+import 'package:counter_app/views/counter_screen2.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(DynamicListHomeScreen());
+  runApp(const CounterHomeScreen());
 }

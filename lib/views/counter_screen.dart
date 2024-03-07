@@ -14,6 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(useMaterial3: false),
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blueAccent,
