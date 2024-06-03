@@ -1,6 +1,7 @@
+import 'package:counter_app/utils/count_modifier_provider.dart';
+import 'package:counter_app/utils/global_variables.dart';
 import 'package:flutter/material.dart';
-
-import '../utils/global variables.dart';
+import 'package:provider/provider.dart';
 
 class DynamicListHomeScreen extends StatefulWidget {
   const DynamicListHomeScreen({super.key});
@@ -10,7 +11,59 @@ class DynamicListHomeScreen extends StatefulWidget {
 }
 
 class _DynamicListHomeScreenState extends State<DynamicListHomeScreen> {
-  int len = boxData.length;
+  @override
+  Widget build(BuildContext context) {
+    var provider = Provider.of<CountModifierProvider>(context);
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.indigo.shade900,
+        title: const Text(
+          'Dynamic list',
+          style: TextStyle(
+            fontSize: 24,
+            color: Colors.white,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+      ),
+      body: boxList(context, boxData),
+      floatingActionButton: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          FloatingActionButton(
+            splashColor: Colors.white38,
+            backgroundColor: Colors.indigo.shade900,
+            shape: const CircleBorder(),
+            onPressed: () => provider.dynamicListIncrement(),
+            // heroTag: 'fab1',
+            child: const Icon(
+              Icons.add,
+              color: Colors.white,
+              size: 30,
+              weight: 100,
+            ),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          FloatingActionButton(
+            splashColor: Colors.white38,
+            backgroundColor: Colors.indigo.shade900,
+            shape: const CircleBorder(),
+            onPressed: () => provider.dynamicListDecrement(),
+            // heroTag: 'fab2',
+            child: const Icon(
+              Icons.remove,
+              color: Colors.white,
+              size: 30,
+              weight: 10,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget boxList(context, List<Map<int, Color>> boxData) {
     return SingleChildScrollView(
@@ -36,76 +89,6 @@ class _DynamicListHomeScreenState extends State<DynamicListHomeScreen> {
             ),
           );
         }).toList(),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Colors.indigo.shade900,
-          title: const Text(
-            'Dynamic list',
-            style: TextStyle(
-              fontSize: 24,
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ),
-        body: boxList(context, boxData),
-        floatingActionButton: Row(
-          mainAxisSize: MainAxisSize.min,
-          // This is important to keep the Column size to a minimum
-          children: [
-            FloatingActionButton(
-              backgroundColor: Colors.indigo.shade900,
-              shape: const CircleBorder(),
-              onPressed: () {
-                setState(() {
-                  if (boxData.length % 2 == 0) {
-                    len++;
-                    boxData.add({len: Colors.blue.shade200});
-                  } else {
-                    len++;
-                    boxData.add({len: Colors.indigo.shade300});
-                  }
-                });
-              },
-              heroTag: 'fab1',
-              child: const Icon(
-                Icons.add,
-                color: Colors.white,
-                size: 30,
-                weight: 100,
-              ),
-            ),
-            const SizedBox(
-              width: 10, // Spacing between the FABs
-            ),
-            FloatingActionButton(
-              backgroundColor: Colors.indigo.shade900,
-              shape: const CircleBorder(),
-              onPressed: () {
-                setState(() {
-                  boxData.removeLast();
-                  len--;
-                });
-              },
-              heroTag: 'fab2',
-              child: const Icon(
-                Icons.remove,
-                color: Colors.white,
-                size: 30,
-                weight: 10,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

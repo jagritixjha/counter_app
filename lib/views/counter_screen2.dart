@@ -1,5 +1,5 @@
-import 'package:counter_app/utils/global%20variables.dart';
-import 'package:counter_app/utils/increment_provider.dart';
+import 'package:counter_app/utils/count_modifier_provider.dart';
+import 'package:counter_app/utils/global_variables.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -66,6 +66,8 @@ class _CounterHomeScreenState extends State<CounterHomeScreen> {
                   ),
                   const SizedBox(width: 40),
                   InkWell(
+                    radius: 12,
+                    splashColor: Colors.red,
                     onTap: () => provider.incrementCount(n: 2),
                     child: Container(
                       alignment: Alignment.center,

@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:counter_app/utils/increment_provider.dart';
+import 'package:counter_app/utils/count_modifier_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -31,9 +31,9 @@ class _HomeScreenState extends State<HomeScreen> {
             const Text(
               'you have pushed the button this many times :',
               style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 18,
-                color: Colors.black87,
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+                color: Colors.black54,
               ),
             ),
             Consumer<CountModifierProvider>(builder: (context, value, child) {
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 "${value.incrementedCount}",
                 style: const TextStyle(
                   fontWeight: FontWeight.w600,
-                  fontSize: 40,
+                  fontSize: 38,
                   color: Colors.black54,
                 ),
               );
@@ -49,13 +49,18 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          provider.incrementCount();
-        },
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
+      floatingActionButton: Theme(
+        data: ThemeData(
+          useMaterial3: false,
+        ),
+        child: FloatingActionButton(
+          onPressed: () {
+            provider.incrementCount();
+          },
+          child: const Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
         ),
       ),
     );
