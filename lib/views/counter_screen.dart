@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:counter_app/utils/count_modifier_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +12,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    log('build called');
     var provider = Provider.of<CountModifierProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(

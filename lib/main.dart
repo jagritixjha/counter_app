@@ -1,4 +1,4 @@
-import 'package:counter_app/utils/increment_provider.dart';
+import 'package:counter_app/utils/count_modifier_provider.dart';
 import 'package:counter_app/views/dynamic_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
