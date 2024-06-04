@@ -1,8 +1,25 @@
-import 'package:counter_app/utils/global%20variables.dart';
+import 'package:counter_app/utils/global_variables.dart';
 import 'package:flutter/material.dart';
 
 class IconListScreen extends StatelessWidget {
   const IconListScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 4,
+        shadowColor: Colors.grey.shade200,
+        centerTitle: true,
+        title: const Text(
+          'Icons',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+        ),
+      ),
+      body: list(icons),
+    );
+  }
 
   Widget list(List<List<IconData>> icon) {
     return SingleChildScrollView(
@@ -43,26 +60,6 @@ class IconListScreen extends StatelessWidget {
             ),
           );
         }).toList(),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 4,
-          shadowColor: Colors.grey.shade200,
-          centerTitle: true,
-          title: const Text(
-            'Icons',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-          ),
-        ),
-        body: list(icons),
       ),
     );
   }

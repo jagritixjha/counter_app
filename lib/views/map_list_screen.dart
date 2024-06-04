@@ -1,4 +1,4 @@
-import 'package:counter_app/utils/global%20variables.dart';
+import 'package:counter_app/utils/global_variables.dart';
 import 'package:flutter/material.dart';
 
 class MapListScreen extends StatelessWidget {
@@ -29,6 +29,27 @@ class MapListScreen extends StatelessWidget {
           );
         });
   }*/
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white.withOpacity(0.9),
+      appBar: AppBar(
+        backgroundColor: Colors.blueAccent,
+        elevation: 4,
+        shadowColor: Colors.grey,
+        leading: const Icon(Icons.menu),
+        title: const Text(
+          'Map',
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            color: Colors.white,
+          ),
+        ),
+      ),
+      body: container(context, data),
+    );
+  }
+
   Widget container(context, List<Map<String, IconData>> data) {
     return SingleChildScrollView(
       child: Column(
@@ -53,30 +74,6 @@ class MapListScreen extends StatelessWidget {
             ),
           );
         }).toList(),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.white.withOpacity(0.9),
-        appBar: AppBar(
-          backgroundColor: Colors.blueAccent,
-          elevation: 4,
-          shadowColor: Colors.grey,
-          leading: const Icon(Icons.menu),
-          title: const Text(
-            'Map',
-            style: TextStyle(
-              fontWeight: FontWeight.w700,
-              color: Colors.white,
-            ),
-          ),
-        ),
-        body: container(context, data),
       ),
     );
   }
