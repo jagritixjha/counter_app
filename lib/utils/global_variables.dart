@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 int byTwo = 2;
 int byFour = 4;
+bool themeVar = false;
 
 List<Map<String, IconData>> data = [
   {'Exit': Icons.exit_to_app},

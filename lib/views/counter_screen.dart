@@ -1,4 +1,6 @@
 import 'package:counter_app/utils/count_modifier_provider.dart';
+import 'package:counter_app/utils/global_variables.dart';
+import 'package:counter_app/utils/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,53 +15,66 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<CountModifierProvider>(context, listen: false);
+    var themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
         elevation: 8,
         shadowColor: Colors.grey,
-        title: const Text('flutter demo home page',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500)),
+        title: const Text(
+          'flutter demo home page',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               'you have pushed the button this many times :',
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-                color: Colors.black54,
-              ),
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             Consumer<CountModifierProvider>(builder: (context, value, child) {
               return Text(
                 "${value.incrementedCount}",
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 38,
-                  color: Colors.black54,
-                ),
+                style: Theme.of(context).textTheme.bodyLarge,
               );
             }),
           ],
         ),
       ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: Theme(
-        data: ThemeData(
-          useMaterial3: false,
-        ),
-        child: FloatingActionButton(
-          onPressed: () {
-            provider.incrementCount();
-          },
-          child: const Icon(
-            Icons.add,
-            color: Colors.white,
+          data: ThemeData(
+            useMaterial3: false,
           ),
-        ),
-      ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              FloatingActionButton(
+                onPressed: () => themeProvider.changeTheme(),
+                child: Icon(
+                  themeVar ? Icons.lightbulb : Icons.lightbulb_outline,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              FloatingActionButton(
+                onPressed: () {
+                  provider.incrementCount();
+                },
+                child: const Icon(
+                  Icons.add,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          )),
     );
   }
 }
