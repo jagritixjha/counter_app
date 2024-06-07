@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               FloatingActionButton(
-                onPressed: () => themeProvider.changeTheme(),
+                onPressed: () => themeProvider.toggleTheme(),
                 child: Icon(
                   themeVar ? Icons.lightbulb : Icons.lightbulb_outline,
                   color: Colors.white,
